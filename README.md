@@ -3,18 +3,14 @@
 [![reward](https://make.fun/badge/token-radar-01/andysawunk/token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 # Token Radar — token-radar-01 entry
 
-
 A token launch radar for make.fun's token-radar-01 bounty. The program reads the sealed
 DefiLlama protocol snapshot, ranks every protocol that records no token yet by an implied
 launch value, and hands in a static dashboard: the ranked board, a detail view per protocol
 with the model's own arithmetic, filters, and a concrete farm plan for every row.
 
-
 ## The model (radar-2)
 
-
 One function scores every row; no protocol name is special-cased.
-
 
 - **Eligibility**: a protocol records no token (no market cap, no CoinGecko id, no symbol) and
   is not a wrapped, staked or bridged product of a token that already trades, not an exchange
@@ -30,22 +26,17 @@ One function scores every row; no protocol name is special-cased.
   prices the gas, the TVL sizes the capital, and the age sets the hold — seven steps each,
   every step with its cost and its time.
 
-
 ## Run
-
 
 ```
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input <snapshot.json>
 ```
 
-
 Node 22.18 or later, standard library only. Writes `board.json`, `data.js`, `dashboard/`,
 `screenshots/` and `dossier.json` into the output directory. Deterministic: two runs over the
 same snapshot write the same bytes.
 
-
 ## Layout
-
 
 - `main.ts` — the entry point: snapshot in, board + dashboard data + dossier out.
 - `lib/model.ts` — the radar-2 model: eligibility, category multiples, implied value, farm plans.
@@ -54,6 +45,4 @@ same snapshot write the same bytes.
 - `screenshots/` — the board, a protocol's detail view, and a filtered view.
 - `.makefun/owner.json` — the claim file naming the entrant account's wallet.
 
-
 MIT licensed; see LICENSE.
-
